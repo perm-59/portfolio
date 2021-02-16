@@ -1,4 +1,5 @@
-# Formly
+# Portfolio project
+# 16.02.2021 add service for backend https://github.com/perm-59/nodejs-room easy get/post rooms and disable CORS from testing local
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.3.
 
