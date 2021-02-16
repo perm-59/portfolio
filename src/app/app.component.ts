@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {FormGroup} from "@angular/forms";
-import {FormlyFieldConfig} from "@ngx-formly/core";
-import {InputModel} from "./model/input-model";
+import {UtilService} from "./service/util.service";
+import {ToastrService} from "ngx-toastr";
 
 @Component({
   selector: 'app-root',
@@ -11,8 +11,10 @@ import {InputModel} from "./model/input-model";
 export class AppComponent implements OnInit{
   form: FormGroup;
   isShow = true;
+  newRoom: string = '';
+  rooms = [];
 
-  constructor() {
+  constructor(private utilService: UtilService, private toastr: ToastrService) {
   }
 
   ngOnInit() {
@@ -28,5 +30,29 @@ export class AppComponent implements OnInit{
     } else {
       this.isShow = false;
     }
+  }
+
+  createRoom() {
+    if (this.newRoom.trim().length) {
+      this.utilService.createRoom(this.newRoom).subscribe(response => {
+        this.toastr.success(this.newRoom, 'Комната создана');
+        this.newRoom = ''
+      });
+    } else {
+      this.toastr.error('Введите название комнаты')
+    }
+
+  }
+
+  getRoom() {
+    this.utilService.getRoom().subscribe(resp => {
+      if (resp.rooms) {
+        let rooms = []
+        resp.rooms.forEach(room => {
+          rooms.push(room.name);
+        })
+        this.rooms = [...rooms]
+      }
+    })
   }
 }

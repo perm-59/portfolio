@@ -18,8 +18,28 @@
       <li>bootstrap</li>
       <li>Two-Way Binding</li>
       <li>scss</li>
+      <li>Небольшое погружение в NodeJS (https://github.com/perm-59/nodejs-room)</li>
     </ul>
   </div>
+
+  <div class="create-room">
+    <div>
+      <input type="text" [(ngModel)]="newRoom">
+      <button class="btn" (click)="createRoom()">Создать комнату</button>
+    </div>
+
+    <div>
+      <button class="btn btn-info" (click)="getRoom()">Получить все комнаты</button>
+    </div>
+  </div>
+
+  <div class="rooms">
+    <div *ngFor="let room of rooms">
+      <p class="text-dark">{{room}}</p>
+    </div>
+  </div>
+
+
 
   <div *ngIf="!isShow">
     <router-outlet></router-outlet>
