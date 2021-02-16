@@ -1,0 +1,33 @@
+<div class="block">
+  <header class="bg-primary">
+    <div class="logo">
+      <a routerLink = "/" (click)="onClick(true)">AnguProj</a>
+    </div>
+    <div class="nav">
+      <b><a routerLink="/calc" (click)="onClick(false)">Калькулятор</a></b>
+      <b><a routerLink="/todo" (click)="onClick(false)">ToDO</a></b>
+    </div>
+
+  </header>
+
+  <div class="text-title text-dark" *ngIf="isShow">
+    <h4>В данном проекте реализовано:</h4>
+    <ul>
+      <li>routing</li>
+      <li>event emitter</li>
+      <li>bootstrap</li>
+      <li>Two-Way Binding</li>
+      <li>scss</li>
+    </ul>
+  </div>
+
+  <div *ngIf="!isShow">
+    <router-outlet></router-outlet>
+  </div>
+
+
+  <footer class="bg-primary">
+    <a href="mailto:rama@inbox.ru?subject=Вопрос">Напишите мне</a>
+
+  </footer>
+</div>

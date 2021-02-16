@@ -1,0 +1,11 @@
+<div>
+  <app-add-todo (onChanged)="addTodo($event)"></app-add-todo>
+  <div *ngIf="todos && todos.length === 0">Заданий не найдено</div>
+  <div *ngFor="let todo of todos" (click)="selectTodo(todo.id)" class="line-todo">
+    <input type="checkbox" [checked]="todo.completed">
+    <span [ngClass]="todo.completed ? 'done-todo' : ''">
+      {{todo.title}}
+    </span>
+  </div>
+  <button class="btn btn-danger text-white" (click)="deleteSelectTodo()">delete</button>
+</div>
